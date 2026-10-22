@@ -6,53 +6,25 @@ st.markdown("""
 
 .stApp { background-color: #07090e !important; color: #ffffff !important; font-family: -apple-system, BlinkMacSystemFont, sans-serif; }
 div[data-testid="stSidebarCollapsedControl"] { display: none; }
-.wizard-card {
-background-color: #0c0f16; border: 1px solid #171d26;
-border-radius: 12px; padding: 20px; margin-bottom: 15px;
-}
-.stButton>button {
-width: 100% !important; background-color: #1e62ff !important; color: white !important;
-border: none !important; border-radius: 10px !important; font-weight: bold !important;
-height: 50px !important; font-size: 16px !important;
-}
-.cat-button>button {
-background-color: #111622 !important; border: 1px solid #1f293a !important;
-height: 60px !important; font-size: 16px !important; margin-bottom: 10px !important;
-}
-.top-bar {
-display: flex; justify-content: space-between; align-items: center; margin-bottom: 15px;
-}
+.wizard-card { background-color: #0c0f16; border: 1px solid #171d26; border-radius: 12px; padding: 20px; margin-bottom: 15px; }
+.stButton>button { width: 100% !important; background-color: #1e62ff !important; color: white !important; border: none !important; border-radius: 10px !important; font-weight: bold !important; height: 50px !important; font-size: 16px !important; }
+.cat-button>button { background-color: #111622 !important; border: 1px solid #1f293a !important; height: 60px !important; font-size: 16px !important; margin-bottom: 10px !important; }
+.top-bar { display: flex; justify-content: space-between; align-items: center; margin-bottom: 15px; }
 .asset-title { font-size: 24px; font-weight: bold; margin: 0; display: flex; align-items: center; gap: 10px; }
-.badge-short {
-background-color: #2c1a1d; color: #ff4a5a; border: 1px solid #4c2226;
-padding: 4px 12px; border-radius: 6px; font-weight: bold; font-size: 14px;
-}
-.badge-long {
-background-color: #162c21; color: #2ecc71; border: 1px solid #1b4c32;
-padding: 4px 12px; border-radius: 6px; font-weight: bold; font-size: 14px;
-}
-.badge-market {
-background-color: #161f33; color: #5c7599; border: 1px solid #233354;
-padding: 4px 12px; border-radius: 6px; font-weight: bold; font-size: 13px;
-}
-.circle-glow {
-border: 3px solid #1e62ff; box-shadow: 0 0 15px rgba(30, 98, 255, 0.2);
-border-radius: 50%; width: 160px; height: 160px; margin: 25px auto;
-display: flex; flex-direction: column; justify-content: center; align-items: center;
-background-color: #0c0f16;
-}
-.grid-3 {
-display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 10px; margin-bottom: 15px;
-}
-.grid-box {
-background-color: #0c0f16; border: 1px solid #171d26; border-radius: 8px; padding: 12px; text-align: center;
-}
+.badge-short { background-color: #2c1a1d; color: #ff4a5a; border: 1px solid #4c2226; padding: 4px 12px; border-radius: 6px; font-weight: bold; font-size: 14px; }
+.badge-long { background-color: #162c21; color: #2ecc71; border: 1px solid #1b4c32; padding: 4px 12px; border-radius: 6px; font-weight: bold; font-size: 14px; }
+.badge-market { background-color: #161f33; color: #5c7599; border: 1px solid #233354; padding: 4px 12px; border-radius: 6px; font-weight: bold; font-size: 13px; }
+.circle-glow { border: 3px solid #1e62ff; box-shadow: 0 0 15px rgba(30, 98, 255, 0.2); border-radius: 50%; width: 160px; height: 160px; margin: 25px auto; display: flex; flex-direction: column; justify-content: center; align-items: center; background-color: #0c0f16; }
+.grid-3 { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 10px; margin-bottom: 15px; }
+.grid-box { background-color: #0c0f16; border: 1px solid #171d26; border-radius: 8px; padding: 12px; text-align: center; }
 .grid-box small { color: #5c6e85; font-size: 12px; display: block; margin-bottom: 4px; }
 .grid-box b { font-size: 18px; color: #ffffff; }
 
 """, unsafe_allow_html=True)
-if "step" not in st.session_state: st.session_state.step = 1
-if "category" not in st.session_state: st.session_state.category = None
+if "step" not in st.session_state:
+st.session_state.step = 1
+if "category" not in st.session_state:
+st.session_state.category = None
 if st.session_state.step == 1:
 st.markdown("🎯 Cecchino AI", unsafe_allow_html=True)
 st.markdown("PASSO 1 DI 2", unsafe_allow_html=True)
@@ -61,13 +33,25 @@ st.markdown("", unsafe_allow_html=True)
 c1, c2 = st.columns(2)
 with c1:
 st.markdown("", unsafe_allow_html=True)
-if st.button("💱 Forex", key="fx"): st.session_state.category = "Forex"; st.session_state.step = 2; st.rerun()
-if st.button("🪙 Bitcoin", key="btc"): st.session_state.category = "Bitcoin"; st.session_state.step = 2; st.rerun()
+if st.button("💱 Forex", key="fx"):
+st.session_state.category = "Forex"
+st.session_state.step = 2
+st.rerun()
+if st.button("🪙 Bitcoin", key="btc"):
+st.session_state.category = "Bitcoin"
+st.session_state.step = 2
+st.rerun()
 st.markdown("", unsafe_allow_html=True)
 with c2:
 st.markdown("", unsafe_allow_html=True)
-if st.button("📊 Indici", key="idx"): st.session_state.category = "Indici"; st.session_state.step = 2; st.rerun()
-if st.button("✨ Oro", key="gold"): st.session_state.category = "Oro"; st.session_state.step = 2; st.rerun()
+if st.button("📊 Indici", key="idx"):
+st.session_state.category = "Indici"
+st.session_state.step = 2
+st.rerun()
+if st.button("✨ Oro", key="gold"):
+st.session_state.category = "Oro"
+st.session_state.step = 2
+st.rerun()
 st.markdown("", unsafe_allow_html=True)
 st.markdown("", unsafe_allow_html=True)
 elif st.session_state.step == 2:
@@ -82,9 +66,13 @@ st.session_state.user_data = {"capitale": capitale, "rischio_pct": rischio_pct, 
 st.markdown("", unsafe_allow_html=True)
 cc1, cc2 = st.columns(2)
 with cc1:
-if st.button("⬅️ Indietro"): st.session_state.step = 1; st.rerun()
+if st.button("⬅️ Indietro"):
+st.session_state.step = 1
+st.rerun()
 with cc2:
-if st.button("Analizza Asset 🎯"): st.session_state.step = 3; st.rerun()
+if st.button("Analizza Asset 🎯"):
+st.session_state.step = 3
+st.rerun()
 elif st.session_state.step == 3:
 st.markdown("", unsafe_allow_html=True)
 st.markdown("Scansione algoritmi in corso...", unsafe_allow_html=True)
@@ -95,10 +83,14 @@ progress_bar.progress(percent_complete + 1)
 st.session_state.step = 4
 st.rerun()
 elif st.session_state.step == 4:
-if st.session_state.category == "Oro": asset_scelto = "XAUUSD"
-elif st.session_state.category == "Bitcoin": asset_scelto = "BTCUSD"
-elif st.session_state.category == "Indici": asset_scelto = "US30"
-else: asset_scelto = "GBPUSD"
+if st.session_state.category == "Oro":
+asset_scelto = "XAUUSD"
+elif st.session_state.category == "Bitcoin":
+asset_scelto = "BTCUSD"
+elif st.session_state.category == "Indici":
+asset_scelto = "US30"
+else:
+asset_scelto = "GBPUSD"
 direzione_rilevata = "SHORT"
 affidabilita = 74 if asset_scelto == "US30" else 81
 giudizio = "MEDIA" if affidabilita == 74 else "ALTA"
